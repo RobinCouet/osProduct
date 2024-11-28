@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+require('dotenv').config()
 const cors = require('cors');
 const mongoose = require('mongoose');
 const osRoutes = require('./routes/os');
@@ -10,7 +11,7 @@ const receipeRoute = require("./routes/receipe");
 
 // Connexion à la base de données
 // l'url correspond a votre mongoDB en local et le nom de votre base de données se trouve après le /
-mongoose.connect("mongodb://localhost:27017/prepavenir")
+mongoose.connect(process.env.MONGO_URL)
     .then(() => {
         console.log("Connexion OK");
     }).catch((error) => {
